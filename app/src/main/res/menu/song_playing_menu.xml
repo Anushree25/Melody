@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/action_settings"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        app:showAsAction="always"
+        android:icon="@mipmap/ic_back_to_list"
+        android:title="Back to list"
+        android:id="@+id/redirect"></item>
+</menu>
+
+

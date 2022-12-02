@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_centerInParent="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:layout_marginTop="40dp"
+        android:src="@mipmap/anushree"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/dev_image"
+        android:layout_width="230dp"
+        android:layout_height="210dp" />
+
+    <TextView
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/dev_details"
+        android:layout_below="@+id/dev_image"
+        android:textSize="17sp"
+        android:textColor="#212121"
+        android:layout_centerHorizontal="true"
+        android:text="This app is made by Anushree as part of Internshala's Online Android Training project"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/app_version"
+        android:layout_below="@+id/dev_details"
+        android:textSize="17sp"
+        android:layout_centerHorizontal="true"
+        android:text="App Version:1.0"
+        android:textColor="#212121"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</RelativeLayout>

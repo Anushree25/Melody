@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="173dp"
+        android:layout_marginTop="35dp"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:src="@drawable/musical_note"></ImageView>
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="147dp"
+        android:layout_height="0dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="39dp"
+        android:src="@drawable/musical_note"></ImageView>
+</RelativeLayout>

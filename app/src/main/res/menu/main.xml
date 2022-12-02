@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@mipmap/sort_icon"
+        android:title="SETTINGS"
+        app:showAsAction="always"
+        android:id="@+id/sort">
+        <menu>
+            <item
+                android:title="By recently added"
+                android:id="@+id/sort_recent_items">
+            </item>
+
+            <item
+                android:title="By name"
+                android:id="@+id/sort_by_name">
+            </item>
+
+        </menu>
+
+
+
+    </item>
+
+
+</menu>
+
+

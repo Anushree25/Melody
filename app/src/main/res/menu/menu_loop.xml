@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="1"
+        android:id="@+id/redirect1"></item>
+
+    <item
+        android:title="2"
+        android:id="@+id/redirect2"></item>
+
+    <item
+        android:title="3"
+        android:id="@+id/redirect3"></item>
+
+    <item
+        android:title="4"
+        android:id="@+id/redirect4"></item>
+
+    <item
+        android:title="5"
+        android:id="@+id/redirect5"></item>
+
+    <item
+        android:title="Infinite"
+        android:id="@+id/redirect"></item>
+</menu>
