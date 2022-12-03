@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import myecho.com.melody.*
 import myecho.com.melody.Adapters.MainScreenAdapter
+import myecho.com.melody.utils.Constants
 import myecho.com.melody.utils.ContentResolver
 import java.util.*
 
@@ -135,9 +136,9 @@ class MainScreenFragment : Fragment() {
         val switcher = item?.itemId
         if (switcher == R.id.sort_by_name) {
             /*Whichever action item is selected, we save the preferences and perform the operation of comparison*/
-            val editor = mActivity?.getSharedPreferences("action_sort", Context.MODE_PRIVATE)?.edit()
-            editor?.putString("action_sort_ascending", "true")
-            editor?.putString("action_sort_recent", "false")
+            val editor = mActivity?.getSharedPreferences(getString(R.string.action_sort), Context.MODE_PRIVATE)?.edit()
+            editor?.putString(getString(R.string.action_sort_asc), "true")
+            editor?.putString(getString(R.string.action_sort_recent), "false")
             editor?.apply()
             if (getSongsList != null) {
                 Collections.sort(getSongsList, Songs.Statified.nameComparator)
@@ -145,9 +146,9 @@ class MainScreenFragment : Fragment() {
             mainScreenAdapter?.notifyDataSetChanged()
             return false
         } else if (switcher == R.id.sort_recent_items) {
-            val editortwo = mActivity?.getSharedPreferences("action_sort", Context.MODE_PRIVATE)?.edit()
-            editortwo?.putString("action_sort_recent", "true")
-            editortwo?.putString("action_sort_ascending", "false")
+            val editortwo = mActivity?.getSharedPreferences(getString(R.string.action_sort), Context.MODE_PRIVATE)?.edit()
+            editortwo?.putString(getString(R.string.action_sort_recent), "true")
+            editortwo?.putString(getString(R.string.action_sort_asc), "false")
             editortwo?.apply()
             if (getSongsList != null) {
                 Collections.sort(getSongsList, Songs.Statified.dateComparator)
@@ -199,20 +200,20 @@ class MainScreenFragment : Fragment() {
             FavoriteFragment.Statified.mediaPlayer=SongsPlayingFragment.Statified.musicBgService!!.mediaPlayer
             val songsPlayingFragment= SongsPlayingFragment()
             var obj=Bundle()
-            obj.putString("artist",SongsPlayingFragment.Statified.currentSongPlayer?.songArtist)
-            obj.putString("path",SongsPlayingFragment.Statified.currentSongPlayer?.songPath)
-            obj.putString("title",SongsPlayingFragment.Statified.currentSongPlayer?.songTitle)
-            obj.putInt("id",SongsPlayingFragment.Statified.currentSongPlayer?.songId?.toInt() as Int)
-            obj.putInt("songPosition",SongsPlayingFragment.Statified.currentSongPlayer?.songPosition?.toInt() as Int)
-            obj.putBoolean("songPlaying",SongsPlayingFragment.Statified.currentSongPlayer?.isPlaying!!)
+            obj.putString(Constants.ARTIST,SongsPlayingFragment.Statified.currentSongPlayer?.songArtist)
+            obj.putString(Constants.PATH,SongsPlayingFragment.Statified.currentSongPlayer?.songPath)
+            obj.putInt(Constants.ID,SongsPlayingFragment.Statified.currentSongPlayer?.songId?.toInt() as Int)
+            obj.putInt(Constants.SONG_POSITION,SongsPlayingFragment.Statified.currentSongPlayer?.songPosition?.toInt() as Int)
+            obj.putBoolean(Constants.SONG_PLAYING,SongsPlayingFragment.Statified.currentSongPlayer?.isPlaying!!)
+            obj.putString(Constants.TITLE,SongsPlayingFragment.Statified.currentSongPlayer?.songTitle)
 
-            obj.putParcelableArrayList("songslist",getSongsList)
+            obj.putParcelableArrayList(Constants.SONG_LIST,getSongsList)
             songsPlayingFragment.arguments=obj
 
-            obj.putString("FavBottomBar","success")
+            obj.putString(getString(R.string.fav_bottom_bar),getString(R.string.success_text))
 
             fragmentManager?.beginTransaction()?.replace(R.id.details_fragment,songsPlayingFragment)
-                    ?.addToBackStack("SongsPlayingFragment")?.commit()
+                    ?.addToBackStack(getString(R.string.song_fragment))?.commit()
 
          }
 

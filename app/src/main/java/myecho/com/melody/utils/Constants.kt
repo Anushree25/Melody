@@ -11,7 +11,7 @@ class Constants {
         val SONG_LIST= "songslist"
         val MY_PREFS_NAME = "ShakeFeature"
         val FEATURE = "feature"
-
+        val SONG_PLAYING="songPlaying"
     }
 
 

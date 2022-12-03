@@ -30,5 +30,8 @@
     <string name="play">Play</string>
     <string name="next">Next</string>
     <string name="exit">Exit</string>
+    <string name="action_sort">action_sort</string>
+    <string name="action_sort_asc">action_sort_ascending</string>
+    <string name="action_sort_recent">action_sort_recent</string>
 
 </resources>

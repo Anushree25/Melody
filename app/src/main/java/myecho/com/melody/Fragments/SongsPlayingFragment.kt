@@ -77,7 +77,7 @@ class SongsPlayingFragment : Fragment(),ServiceConnection {
             override fun run() {
 
                 var getCurrent= musicBgService!!.mediaPlayer?.currentPosition
-                startTime?.setText(String.format("%d: %d",
+                startTime?.setText(String.format("%2d: %02d",
                         TimeUnit.MILLISECONDS.toMinutes(getCurrent?.toLong() as Long),
                         TimeUnit.MILLISECONDS.toSeconds
                         (getCurrent?.toLong()) -TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(getCurrent?.toLong()))))
@@ -176,6 +176,7 @@ class SongsPlayingFragment : Fragment(),ServiceConnection {
             Statified.loopButton?.setBackgroundResource(R.mipmap.loop_white_icon)
 
             var prevSong=Statified.fetchList?.get(Statified.currentPosition)
+            Statified.currentSongPlayer?.songPosition= Statified.currentPosition
             Statified. currentSongPlayer?.songPath=prevSong?.details
             Statified.currentSongPlayer?.songTitle=prevSong?.songTitle
             Statified.currentSongPlayer?.songArtist=prevSong?.artist
@@ -251,12 +252,12 @@ class SongsPlayingFragment : Fragment(),ServiceConnection {
             val firstTime=mediaPlayer?.currentPosition
             Statified.seekBar?.max=finalTime
 
-            Statified.startTime?.setText(String.format("%d: %d",
+            Statified.startTime?.setText(String.format("%2d: %02d",
                     TimeUnit.MILLISECONDS.toMinutes(firstTime?.toLong()),
                     TimeUnit.MILLISECONDS.toSeconds
                     (firstTime?.toLong()) -TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(firstTime?.toLong()))))
 
-            Statified.endTime?.setText(String.format("%d: %d",
+            Statified.endTime?.setText(String.format("%2d: %02d",
                     TimeUnit.MILLISECONDS.toMinutes(finalTime?.toLong()),
                     TimeUnit.MILLISECONDS.toSeconds
                     (finalTime?.toLong()) -TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(finalTime?.toLong()))))
@@ -724,26 +725,28 @@ class SongsPlayingFragment : Fragment(),ServiceConnection {
         Statified.currentSongPlayer?.shuffleSong = false
         Statified.currentPosition=arguments?.getInt(Constants.SONG_POSITION) as Int
         Statified.fetchList=arguments?.getParcelableArrayList(Constants.SONG_LIST)
-        Statified.currentSongPlayer!!.isPlaying=arguments?.getBoolean(Constants.SONG_POSITION)!!
+        Statified.currentSongPlayer!!.isPlaying=arguments?.getBoolean(Constants.SONG_PLAYING)!!
         //Check song is topped from bottom bar or song
 
         var path:String?=null
         var title:String?=null
         var artist:String?=null
         var id:Long?=0
+        var position:Int?=0
 
         try {
 
             path=arguments?.getString(Constants.PATH)
-            title=arguments?.getString(Constants.TITLE)
+            title= arguments?.getString(Constants.TITLE)
             artist=arguments?.getString(Constants.ARTIST)
             id=arguments?.getInt(Constants.ID)?.toLong()
+            position= arguments?.getInt(Constants.SONG_POSITION) as Int
 
             Statified.currentSongPlayer?.songPath=path
             Statified.currentSongPlayer?.songTitle=title
             Statified.currentSongPlayer?.songArtist=artist
             Statified.currentSongPlayer?.songId=id as Long
-
+            Statified.currentSongPlayer?.songPosition = position
 
             Staticated.updateTextviews(Statified.currentSongPlayer?.songTitle as String,Statified.currentSongPlayer?.songArtist as String)
 
